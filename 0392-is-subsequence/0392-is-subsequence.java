@@ -3,7 +3,8 @@ class Solution {
         
         if(s.length()>t.length())
             return false;
-   
+        if(s.isEmpty())
+            return true;
         
         char[]sArray=s.toCharArray();
         char[]tArray=t.toCharArray();
