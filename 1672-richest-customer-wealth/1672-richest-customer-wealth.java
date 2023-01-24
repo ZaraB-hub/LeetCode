@@ -1,27 +1,15 @@
 class Solution {
     public int maximumWealth(int[][] accounts) {
+     
+        int wealth=0;
         
-        HashMap<Integer, Integer> table = new HashMap<Integer, Integer>();
-        int result;
-        
-        for(int i=0;i<accounts.length;i++){
-            result=0;
-            for(int j=0;j<accounts[i].length;j++){
-                result=result+accounts[i][j];
+        for(int[] customer:accounts){
+            int customerWealth=0;
+            for(int bank:customer){
+                customerWealth+=bank; 
             }
-            table.put(i,result);
+            wealth=Math.max(wealth,customerWealth);
         }
-        
-        int max=table.get(0);
-        
-        for(int i:table.values()){
-            if(max<i)
-                max=i;
-        }        
-        
-        
-        
-        
-        return max;
+     return wealth;
     }
 }
