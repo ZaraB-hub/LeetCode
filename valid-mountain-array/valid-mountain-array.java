@@ -17,6 +17,7 @@ class Solution {
         if (track1 > 0 && track2 > 0 && i == arr.length - 1) {
             return true;
         }
+        
 
         return false;
 }
