@@ -1,44 +1,26 @@
+import java.util.*;
+
 class Solution {
     public int thirdMax(int[] nums) {
+        // Use a TreeSet to automatically remove duplicates and maintain sorted order
+        TreeSet<Integer> set = new TreeSet<>();
 
-        Arrays.sort(nums);
-        
-//         int helper;
-//         for(int i=0;i<nums.length/2;i++){
-//             helper=nums[i];
-//             nums[i]=nums[nums.length-i-1];
-//             nums[nums.length-i-1]=helper;
-//         }       
-        
-        //remove duplicates
-        
-    Set<Integer> set = new HashSet<Integer>();
-    for (int num : nums) {
-    set.add(num);
-}
-    int n = set.size(); 
-    int arr[] = new int[n]; 
-    
-        int z = 0; 
-        for (Integer x : set) 
-            arr[z++] = x; 
-        
- Arrays.sort(arr);
+        // Add all elements from nums to the set
+        for (int num : nums) {
+            set.add(num);
 
-    int max=arr[0];    
-    int max2=arr[0];
-    int max3=arr[0];
-     for(int na:arr){
-         if (max<na){
-             max3=max2;
-             max2=max;
-             max=na;
-         }
+            // If the set size exceeds 3, remove the smallest element
+            if (set.size() > 3) {
+                set.remove(set.first());
+            }
+        }
 
-     }
-        if(arr.length<3)
-            return max;
-        else
-            return max3;
+        // If there are less than 3 unique elements, return the maximum
+        if (set.size() < 3) {
+            return set.last();
+        }
+
+        // Otherwise, return the third maximum
+        return set.first();
     }
 }
