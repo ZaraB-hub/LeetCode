@@ -34,12 +34,7 @@ class Solution {
              max2=max;
              max=na;
          }
-         else if (na > max2 && na != max) {
-                max3 = max2;
-                max2 = na;
-            } else if (na > max3 && na != max2 && na != max) {
-                max3 = na;
-            }
+
      }
         if(arr.length<3)
             return max;
